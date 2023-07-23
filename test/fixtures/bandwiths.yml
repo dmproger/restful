@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  server: one
+  Value: 1.5
+  value_id: 1
+  interface_name: MyText
+
+two:
+  server: two
+  Value: 1.5
+  value_id: 1
+  interface_name: MyText
