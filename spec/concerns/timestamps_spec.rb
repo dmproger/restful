@@ -4,11 +4,13 @@ RSpec.describe Timestamps do
       "standard1 #{value}"
     end
   end
+
   Standard2 = Class.new do
     def self.call(value)
       "standard2 #{value}"
     end
   end
+
   Model = Class.new do
     def attributes
       {
@@ -34,6 +36,7 @@ RSpec.describe Timestamps do
       'updated_at_value'
     end
   end
+
   Model1 = Class.new(Model)
   Model2 = Class.new(Model)
   Model3 = Class.new(Model)
