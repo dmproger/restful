@@ -43,8 +43,8 @@ RSpec.describe Timestamps do
 
   subject do
     Model1.include(Timestamps[Standard1])
-    Model2.include(Timestamps[Standard1])
-    Model3.include(Timestamps[Standard2])
+    Model2.include(Timestamps[Standard2])
+    Model3.include(Timestamps[Standard1])
   end
 
   it 'has correct behavior' do
@@ -60,7 +60,7 @@ RSpec.describe Timestamps do
 
     subject
 
-    [Model1.new, Model2.new].each do |model|
+    [Model1.new, Model3.new].each do |model|
       expect(model.created_at).to eq('standard1 created_at_value')
       expect(model.updated_at).to eq('standard1 updated_at_value')
       expect(model.attributes).to match(
@@ -70,7 +70,7 @@ RSpec.describe Timestamps do
       )
     end
 
-    [Model3.new].each do |model|
+    [Model2.new].each do |model|
       expect(model.created_at).to eq('standard2 created_at_value')
       expect(model.updated_at).to eq('standard2 updated_at_value')
       expect(model.attributes).to match(
