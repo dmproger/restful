@@ -25,6 +25,14 @@ RSpec.describe Timestamps do
         updated_at: 'updated_at_value'
       }[attr]
     end
+
+    def created_at
+      'created_at_value'
+    end
+
+    def updated_at
+      'updated_at_value'
+    end
   end
   Model1 = Class.new(Model)
   Model2 = Class.new(Model)
@@ -37,6 +45,16 @@ RSpec.describe Timestamps do
   end
 
   it 'has correct behavior' do
+    [Model1.new, Model2.new, Model3.new].each do |model|
+      expect(model.created_at).to eq('created_at_value')
+      expect(model.updated_at).to eq('updated_at_value')
+      expect(model.attributes).to match(
+        'attr1' => 'attr1_value',
+        'created_at' => 'created_at_value',
+        'updated_at' => 'updated_at_value'
+      )
+    end
+
     subject
 
     [Model1.new, Model2.new].each do |model|
