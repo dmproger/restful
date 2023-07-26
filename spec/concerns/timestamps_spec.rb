@@ -11,11 +11,19 @@ RSpec.describe Timestamps do
   end
   Model = Class.new do
     def attributes
-      { 'attr1' => 'attr1_value', 'created_at' => 'created_at_value' }
+      {
+        'attr1' => 'attr1_value',
+        'created_at' => 'created_at_value',
+        'updated_at' => 'updated_at_value'
+      }
     end
 
     def [](attr)
-      { attr1: 'attr1_value', created_at: 'created_at_value' }[attr]
+      {
+        attr1: 'attr1_value',
+        created_at: 'created_at_value',
+        updated_at: 'updated_at_value'
+      }[attr]
     end
   end
   Model1 = Class.new(Model)
@@ -33,19 +41,21 @@ RSpec.describe Timestamps do
 
     [Model1.new, Model2.new].each do |model|
       expect(model.created_at).to eq('standard1 created_at_value')
-      expect(model.updated_at).to eq('standard1 ')
+      expect(model.updated_at).to eq('standard1 updated_at_value')
       expect(model.attributes).to match(
         'attr1' => 'attr1_value',
-        'created_at' => 'standard1 created_at_value'
+        'created_at' => 'standard1 created_at_value',
+        'updated_at' => 'standard1 updated_at_value'
       )
     end
 
     [Model3.new].each do |model|
       expect(model.created_at).to eq('standard2 created_at_value')
-      expect(model.updated_at).to eq('standard2 ')
+      expect(model.updated_at).to eq('standard2 updated_at_value')
       expect(model.attributes).to match(
         'attr1' => 'attr1_value',
-        'created_at' => 'standard2 created_at_value'
+        'created_at' => 'standard2 created_at_value',
+        'updated_at' => 'standard2 updated_at_value'
       )
     end
   end
