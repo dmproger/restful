@@ -1,4 +1,6 @@
 class Bandwith < ApplicationRecord
+  include Timestamps[Iso8601]
+
   # put real world network brandwiths limits
   MBIT_IN_SEC_RANGE = 1..5_000_000
 
